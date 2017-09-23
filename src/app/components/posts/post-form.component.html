@@ -14,7 +14,8 @@
         <textarea formControlName="body" class="form-control"
             placeholder="Escribe una noticia"
             [ngClass]="{'is-valid':!form.controls.body.invalid,
-                'is-invalid':form.controls.body.touched && form.controls.body.invalid}"></textarea>
+                'is-invalid':form.controls.body.touched && form.controls.body.invalid}">
+        </textarea>
         <div *ngIf="form.controls.body.invalid" 
             [ngClass]="{'invalid-feedback':form.controls.body.invalid || form.controls.body.dirty}">
                 <div *ngIf="form.controls.body.errors.required">
@@ -27,7 +28,15 @@
     </div>
     <button class="btn btn-outline-success btn-md"
         [disabled]="form.invalid"
-        (click)="onSave()">Guardar</button>
+        (click)="onSave()">
+        <span class="fa fa-check fa-2">
+            Guardar 
+        </span>
+    </button>
     <button class="btn btn-outline-warning btn-md"
-        (click)="onCancel()">Cancelar</button>
+        (click)="onCancel()">
+        <span class="fa fa-close fa-2">
+            Cancelar
+        </span>
+    </button>
 </form>

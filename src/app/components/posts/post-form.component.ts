@@ -34,7 +34,7 @@ export class PostFormComponent implements OnInit {
         this.post.emit(this.form.value);
         this.form.reset();
     }
-
+    
     onCancel() {
         this.form.reset();
     }

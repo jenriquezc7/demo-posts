@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from '../../interface/post.interface';
 
 @Component({
@@ -11,4 +11,10 @@ export class PostComponent {
     @Input()
     private post: Post;
 
+    @Output()
+    selectedPost = new EventEmitter<any>();
+
+    onDelete() {
+        this.selectedPost.emit(this.post);
+    }
 }

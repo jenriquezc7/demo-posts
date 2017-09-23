@@ -1,6 +1,9 @@
-<div>
-    <h2>{{post.title}}</h2>
-</div>
-<div>
+<div class="row">
+    <h2>
+        {{post.title}}
+        <a class="btn btn-outline-danger float-lg-right fa fa-trash-o fa-1 btn-sm"
+            (click)="onDelete()">
+        </a>
+    </h2> 
     <p>{{post.body}}</p>
 </div>

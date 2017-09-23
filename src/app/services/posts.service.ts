@@ -21,4 +21,8 @@ export class PostService {
     savePost(post: any) {
         return this.http.post(this.baseUrl + "/posts",post);
     }
+
+    deletePost(postId:number) {
+        return this.http.delete(this.baseUrl + "/posts/" + postId);
+    }
 }

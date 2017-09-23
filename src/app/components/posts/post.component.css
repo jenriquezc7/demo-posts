@@ -1,0 +1,9 @@
+h2 {
+    width: 100%;
+}
+a.fa-trash-o {
+    color:#e60000;
+}
+a.fa-trash-o:hover {
+    color:#e60000;
+}

@@ -26,4 +26,12 @@ export class PostListComponent implements OnInit {
             console.log("Error");
         })
     }
+
+    onDelete(post:any) {
+        this.postService.deletePost(post.id).subscribe(() => {
+            this.posts.splice(this.posts.indexOf(post),1);
+        }, (error) =>{
+            console.log("Error")
+        })
+    }
 }
