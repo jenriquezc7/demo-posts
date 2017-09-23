@@ -7,7 +7,7 @@ export class PostService {
     private baseUrl: string;
 
     constructor(private http: HttpClient) {
-        this.baseUrl = "https://jsonplaceholder.typicode.com";
+        this.baseUrl = "http://jsonplaceholder.typicode.com";
     }
 
     getPosts() {
@@ -19,6 +19,6 @@ export class PostService {
     }
 
     savePost(post: any) {
-        return this.http.post(this.baseUrl + "/posts", post);
+        return this.http.post(this.baseUrl + "/posts",post);
     }
 }

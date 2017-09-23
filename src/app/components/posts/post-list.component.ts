@@ -15,8 +15,15 @@ export class PostListComponent implements OnInit {
 
     ngOnInit() {
         this.postService.getPosts().subscribe((posts: Post[]) => {
-            this.posts = posts;
+            this.posts = posts.reverse();
         });
     }
 
+    onSave(post:any) {
+        this.postService.savePost(post).subscribe((post:Post) => {
+            this.posts.unshift(post);
+        }, (error) =>{
+            console.log("Error");
+        })
+    }
 }

@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+    <div class="form-group">
+        <label for="title" class="form-control-label">Titulo</label>
+        <input type="text" class="form-control" 
+            formControlName="title" placeholder="titulo"
+            [ngClass]="{'is-valid':!form.controls.title.invalid,
+                'is-invalid':form.controls.title.touched && form.controls.title.invalid}">
+        <div *ngIf="form.controls.title.invalid" 
+            [ngClass]="{'invalid-feedback':form.controls.title.invalid || form.controls.title.dirty}">
+            titulo requerido
+        </div>
+    </div>
+    <div class="form-group">
+        <textarea formControlName="body" class="form-control"
+            placeholder="Escribe una noticia"
+            [ngClass]="{'is-valid':!form.controls.body.invalid,
+                'is-invalid':form.controls.body.touched && form.controls.body.invalid}"></textarea>
+        <div *ngIf="form.controls.body.invalid" 
+            [ngClass]="{'invalid-feedback':form.controls.body.invalid || form.controls.body.dirty}">
+                <div *ngIf="form.controls.body.errors.required">
+                    El cuerpo de la noticia es requerido
+                </div>
+                <div *ngIf="form.controls.body.errors.minlength">
+                    El cuerpo de la noticia debe tener minimo 3 caracteres
+                </div>
+        </div>
+    </div>
+    <button class="btn btn-outline-success btn-md"
+        [disabled]="form.invalid"
+        (click)="onSave()">Guardar</button>
+    <button class="btn btn-outline-warning btn-md"
+        (click)="onCancel()">Cancelar</button>
+</form>

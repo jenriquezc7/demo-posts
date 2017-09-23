@@ -3,15 +3,20 @@ import { CommonModule } from '@angular/common';
 import { PostComponent } from './post.component';
 import { PostListComponent } from './post-list.component';
 import { PostService } from '../../services/posts.service';
+import { PostFormComponent } from './post-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  imports:[CommonModule],
+  imports:[CommonModule,
+    ReactiveFormsModule],
   declarations: [
     PostComponent,
-    PostListComponent],
+    PostListComponent,
+    PostFormComponent],
   exports: [
     PostComponent,
-    PostListComponent],
+    PostListComponent,
+    PostFormComponent],
   providers: [PostService]
 })
 export class PostModule { }

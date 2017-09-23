@@ -4,7 +4,7 @@ import * as jQuery from 'jquery';
 @Component({
     selector: 'nav-bar',
     templateUrl: './navbar.component.html',
-    styleUrls:[]
+    styleUrls:['navbar.component.css']
 })
 
 export class NavbarComponent { }
