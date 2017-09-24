@@ -9,12 +9,19 @@ import { Post } from '../../interface/post.interface';
 export class PostComponent {
     
     @Input()
-    private post: Post;
+    post: Post;
 
     @Output()
-    selectedPost = new EventEmitter<any>();
+    deletePost = new EventEmitter<Post>();
+
+    @Output()
+    selectedPost = new EventEmitter<Post>();
 
     onDelete() {
+        this.deletePost.emit(this.post);
+    }
+
+    onSelect() {
         this.selectedPost.emit(this.post);
     }
 }

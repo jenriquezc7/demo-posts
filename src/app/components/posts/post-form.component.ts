@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     templateUrl:'./post-form.component.html',
     styleUrls:['./post-form.component.css']
 })
-export class PostFormComponent implements OnInit {
+export class PostFormComponent implements OnChanges {
     
     private form:FormGroup;
     
@@ -22,16 +22,22 @@ export class PostFormComponent implements OnInit {
             'title': ['', Validators.required],
             'body': ['', [Validators.required, Validators.minLength(3)]]
         });
-
-        console.log("in constructor...");
     }
 
-    ngOnInit() {
-        console.log("in ngOnInit...");
+    ngOnChanges() {
+        if(this.selectedPost) {
+            this.form.patchValue(this.selectedPost);
+            console.log("selected post component");
+            console.log(this.selectedPost);
+        }
     }
 
     onSave() {
-        this.post.emit(this.form.value);
+        if(this.selectedPost) {
+            this.post.emit(Object.assign(this.selectedPost,this.form.value));
+        }
+        else
+            this.post.emit(this.form.value);
         this.form.reset();
     }
     

@@ -1,4 +1,7 @@
-<post-form (post)="onSave($event)"></post-form>
+<post-form (post)="onSave($event)" 
+    [selectedPost]="selectedPost">
+</post-form>
 <post *ngFor="let post of posts" [post]="post"
-    (selectedPost)="onDelete($event)">
+    (deletePost)="onDelete($event)"
+    (selectedPost)="onSelected($event)">
 </post>
