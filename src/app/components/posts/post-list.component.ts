@@ -16,9 +16,7 @@ export class PostListComponent implements OnInit {
     constructor(private postService: PostService) { }
 
     ngOnInit() {
-        this.postService.getPosts().subscribe((posts: Post[]) => {
-            this.posts = posts.reverse();
-        });
+        this.postService.getPosts().subscribe((posts: Post[]) => this.posts = posts.reverse());
     }
 
     onSave(post:any) {
@@ -26,21 +24,16 @@ export class PostListComponent implements OnInit {
             console.log("editPost",post);
             this.postService.updatePost(post.id,post).subscribe(() =>{
                 this.posts.forEach((p)=> {
-                    if(p.id === this.selectedPost.id){
+                    if(p.id === this.selectedPost.id)
                         return Object.assign(p,post);
-                    }
                 });
                 this.selectedPost = null;
-            }, (error) => {
-                console.log("Error");
-            });
+            }, (error) => console.log("Error"));
         }
         else{        
             this.postService.savePost(post).subscribe((post:Post) => {
                 this.posts.unshift(post);
-            }, (error) =>{
-                console.log("Error");
-            });
+            }, (error) => console.log("Error"));
         }
     }
 
