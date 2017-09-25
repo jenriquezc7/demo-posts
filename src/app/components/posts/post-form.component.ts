@@ -25,11 +25,8 @@ export class PostFormComponent implements OnChanges {
     }
 
     ngOnChanges() {
-        if(this.selectedPost) {
+        if(this.selectedPost)
             this.form.patchValue(this.selectedPost);
-            console.log("selected post component");
-            console.log(this.selectedPost);
-        }
     }
 
     onSave() {
