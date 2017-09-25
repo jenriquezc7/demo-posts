@@ -33,9 +33,8 @@ export class PostFormComponent implements OnChanges {
     }
 
     onSave() {
-        if(this.selectedPost) {
+        if(this.selectedPost) 
             this.post.emit(Object.assign(this.selectedPost,this.form.value));
-        }
         else
             this.post.emit(this.form.value);
         this.form.reset();
